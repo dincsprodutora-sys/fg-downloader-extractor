@@ -1,12 +1,23 @@
-const express = require('express');
+import express from 'express';
+
+import {
+  createJob,
+  getJobStatus,
+  getMetadata,
+  getFormats,
+  generateDownload
+} from '../controllers/media.controller.js';
+
 const router = express.Router();
-const mediaController = require('../controllers/media.controller');
 
-router.post('/jobs', mediaController.createJob);
-router.get('/jobs/:id', mediaController.getJobStatus);
-router.get('/jobs/:id/metadata', mediaController.getMetadata);
-router.get('/jobs/:id/formats', mediaController.getFormats);
-router.post('/jobs/:id/download', mediaController.generateDownload);
+router.post('/jobs', createJob);
 
-module.exports = router;
-// v2 - forced sync to github
+router.get('/jobs/:id', getJobStatus);
+
+router.get('/jobs/:id/metadata', getMetadata);
+
+router.get('/jobs/:id/formats', getFormats);
+
+router.post('/jobs/:id/download', generateDownload);
+
+export default router;
