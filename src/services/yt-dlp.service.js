@@ -1,8 +1,13 @@
-const { exec } = require('child_process');
-const util = require('util');
+import { exec } from 'child_process';
+import util from 'util';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
 const execPromise = util.promisify(exec);
-const path = require('path');
-const fs = require('fs');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class YtDlpService {
   /**
@@ -82,5 +87,4 @@ class YtDlpService {
   }
 }
 
-module.exports = new YtDlpService();
-// v2 - forced sync to github
+export default new YtDlpService();
