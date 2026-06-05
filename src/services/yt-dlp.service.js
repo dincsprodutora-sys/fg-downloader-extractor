@@ -20,8 +20,7 @@ class YtDlpService {
     try {
       // Verifica se o binário local existe (baixado via postinstall no Render)
       // Caso contrário, tenta usar o comando global 'yt-dlp'
-      const localBinary = path.join(__dirname, 'yt-dlp');
-      const binary = fs.existsSync(localBinary) ? localBinary : 'yt-dlp';
+const binary = 'yt-dlp';
 
       const command = `${binary} ${args.join(' ')} "${url}"`;
       const { stdout } = await execPromise(command, { maxBuffer: 20 * 1024 * 1024 });
