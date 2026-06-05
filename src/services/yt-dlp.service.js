@@ -26,7 +26,7 @@ const binary = fs.existsSync(localBinary)
   ? localBinary
   : 'yt-dlp';
 
-      const command = `${binary} --extractor-args "youtube:player_client=tv_embedded" ${args.join(' ')} "${url}"`;;
+      const command = `${binary} --extractor-args "youtube:player_client=android" ${args.join(' ')} "${url}"`;;
       const { stdout } = await execPromise(command, { maxBuffer: 20 * 1024 * 1024 });
       return JSON.parse(stdout);
     } catch (error) {
